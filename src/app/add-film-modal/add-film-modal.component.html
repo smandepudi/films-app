@@ -1,0 +1,56 @@
+<div mat-dialog-title class="mat-dialog-title d-flex justify-content-between">
+  <h4>Add a Film</h4>
+  <div class="removeIcon" [mat-dialog-close]="true">X</div>
+</div>
+<mat-dialog-content>
+  <div *ngFor="let film of newFilm | keyvalue; let i = index">
+    <div *ngIf="film.key == 'releaseDate'" class="modal__variable-wrap">
+      <div class="mb-2">
+        <label for="{{ film.key }}">{{ film.key }}</label>
+      </div>
+      <div class="required-field mb-2">
+        <input
+          (click)="basicDatepicker.open()"
+          (dateChange)="addDataForFilm($event, film.key, i)"
+          [matDatepicker]="basicDatepicker"
+        />
+
+        <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #basicDatepicker></mat-datepicker>
+      </div>
+    </div>
+
+    <div
+      *ngIf="film.key == 'title' || film.key == 'director'"
+      class="modal__variable-wrap"
+    >
+      <div class="mb-2">
+        <label for="{{ film.key }}">{{ film.key }}</label>
+      </div>
+      <div class="required-field mb-2">
+        <input
+          class="modal__variable-input"
+          (keyup)="addDataForFilm($event, film.key, i)"
+          id="{{ film.key }}"
+          placeholder="Enter data..."
+          type="text"
+        />
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="d-flex flex-grow-1 justify-content-starr">
+    <button
+      [disabled]="!this.showSave"
+      class="btn btn-outline-primary saveBtn mr-2"
+      [ngClass]="{ 'button--disabled': !this.showSave }"
+      (click)="save()"
+    >
+      Save
+    </button>
+    <button class="btn btn-outline-primary mr-2" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

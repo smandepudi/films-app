@@ -1,0 +1,74 @@
+.resultsView {
+  padding: 70px 50px 50px 70px;
+}
+.result-header {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
+table .table-light {
+  background-color: #ddd;
+}
+tbody {
+  border-top: none !important;
+}
+.result-header-row {
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  font: 500 16px/20px "Roboto", sans-serif;
+  height: 48px;
+}
+.sport-options {
+  width: 300px;
+  border-radius: 7px;
+  padding: 5px;
+  margin-left: 30px;
+}
+.result-list__row {
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  font: 400 14px/20px "Roboto", sans-serif;
+  height: 48px;
+}
+
+.result-list__col {
+  padding: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  min-width: 315px;
+  max-width: 315px;
+}
+.titleDiv {
+  cursor: pointer;
+}
+.titleLink {
+  color: #0818a8;
+  text-decoration: underline;
+}
+.addFilmContainer {
+  justify-content: right;
+  display: flex;
+}
+.addIcon {
+  background: lightblue;
+  line-height: 32px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  justify-content: center;
+  display: flex;
+}
+.removeIcon {
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+<div mat-dialog-title class="mat-dialog-title d-flex justify-content-between">
+  <h4>Remove Film</h4>
+  <div class="removeIcon" [mat-dialog-close]="true">X</div>
+</div>
+<mat-dialog-content>
+  <div class="modal__variable-wrap">
+    Are you sure you want to remove the film <b>{{ paramFilm.title }}</b>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="d-flex flex-grow-1 justify-content-starr">
+    <button class="btn btn-outline-primary yesBtn" (click)="removeFilm()">
+      Yes
+    </button>
+    <button class="btn btn-outline-primary mr-2" (click)="cancel()">No</button>
+  </div>
+</mat-dialog-actions>
