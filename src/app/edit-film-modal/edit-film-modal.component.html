@@ -4,8 +4,7 @@
 </div>
 
 <mat-dialog-content>
-  <p class="modal-subheader">{{ this.filmToEdit.title }}</p>
-  <div *ngFor="let film of filmToEdit | keyvalue; let i = index">
+  <div *ngFor="let film of originalFilmToEdit | keyvalue; let i = index">
     <div *ngIf="film.key == 'releaseDate'" class="modal__variable-wrap">
       <div class="mb-2">
         <label for="{{ film.key }}">{{ film.key }}</label>
@@ -13,10 +12,12 @@
 
       <div class="required-field mb-2">
         <input
+          class="modal__variable-input"
+          id="{{ film.key }}"
           (click)="basicDatepicker.open()"
-          (dateChange)="addDataForFilm($event, film.key, i)"
+          (dateChange)="editDataForFilm($event, film.key, i)"
           [matDatepicker]="basicDatepicker"
-          [(ngModel)]="this.date"
+          [(ngModel)]="this.datePicked"
         />
 
         <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
@@ -34,7 +35,7 @@
       <div class="required-field mb-2">
         <input
           class="modal__variable-input"
-          (blur)="addDataForFilm($event, film.key, i)"
+          (keyup)="editDataForFilm($event, film.key, i)"
           id="{{ film.key }}"
           value="{{ film.value }}"
           placeholder="Enter data..."

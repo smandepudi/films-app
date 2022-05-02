@@ -10,19 +10,23 @@ import { Film } from '../models/film.model';
 })
 export class RemoveFilmModalComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<RemoveFilmModalComponent>, 
-    private filmsService: FilmsService, 
-    @Inject(MAT_DIALOG_DATA) public paramFilm: Film) { }
+  constructor(private dialogRef: MatDialogRef<RemoveFilmModalComponent>
+              , private filmsService: FilmsService
+              , @Inject(MAT_DIALOG_DATA) public filmToDelete: Film) { }
 
+  /* Cancel Remove Dialog */            
   cancel(): void {
     this.dialogRef.close();
   }
-  
+
   ngOnInit(): void {
   }
 
+  /* Remove Film - On success, update the list of films */  
   removeFilm(): void {
-    this.filmsService.removeFilm(this.paramFilm.id).subscribe((success: any) => {
+    let indexOfFilmToDelete = this.filmsService.allFilms.findIndex((x) => x.id === this.filmToDelete.id);
+    this.filmsService.removeFilm(this.filmToDelete.id).subscribe((success: any) => {
+      this.filmsService.allFilms.splice(indexOfFilmToDelete, 1);
       this.dialogRef.close();
     });
   }

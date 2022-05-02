@@ -16,31 +16,35 @@ export class AddFilmModalComponent implements OnInit {
   showSave: boolean = false;
   constructor(private dialogRef: MatDialogRef<AddFilmModalComponent>, private filmsService: FilmsService) {
     this.newFilm = this.getNewFilm();
-    this.copyOfNewFilm = this.newFilm;
+    this.copyOfNewFilm = this.newFilm; // a copy is used track changes
   }
 
   ngOnInit(): void {
   }
 
+  /* add data for each field and validate */
   addDataForFilm(event: any, key: any, index: any): void {
-    let x = Object.keys(this.newFilm).filter(x => x === key);
     let value = event.target.value;
     this.copyOfNewFilm = { ...this.copyOfNewFilm, [key]: value };
-    this.showSave = !this.anyEmptyFields();
+    this.showSave = !this.anyEmptyFields(); // show Save only when all the fields are filled
   }
 
+  /* cancel save */
   cancel(): void {
     this.dialogRef.close();
   }
 
+  /* save new film */
   save(): void {
     if (this.showSave) {
      this.filmsService.addFilm(this.copyOfNewFilm).subscribe(success => {
+       this.filmsService.allFilms.push(this.copyOfNewFilm);
        this.dialogRef.close();
      });
     }       
    }
 
+  /* Validate for Empty fields */
   private anyEmptyFields(): boolean {
     for (const property in this.copyOfNewFilm) {
       if (this.copyOfNewFilm[property] === '') {
@@ -50,9 +54,11 @@ export class AddFilmModalComponent implements OnInit {
     return false;
   }
 
+  /* Adding a new film*/
   private getNewFilm(): Film {
+    let lastIndex = this.filmsService.allFilms[this.filmsService.allFilms.length - 1].id;
     return {
-      id: 0,
+      id: lastIndex + 1,
       title: '',
       director: '',
       releaseDate: new Date()

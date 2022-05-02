@@ -1,10 +1,18 @@
-import { Component, Inject, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+/* angular core and librraies */
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+/* components */
 import { AddFilmModalComponent } from '../add-film-modal/add-film-modal.component';
 import { EditFilmModalComponent } from '../edit-film-modal/edit-film-modal.component';
-import { FilmsService } from '../films.service';
-import { Film } from '../models/film.model';
 import { RemoveFilmModalComponent } from '../remove-film-modal/remove-film-modal.component';
+
+/* service */
+import { FilmsService } from '../films.service';
+
+/* model */
+import { Film } from '../models/film.model';
+
 
 @Component({
   selector: 'app-film-results-list',
@@ -15,16 +23,8 @@ export class FilmResultsListComponent implements OnInit {
 
   @Input() results: Film[] = [];
   resultsToDisplay: Film[] = [];
-  // private addFilmModal: MatDialogRef<AddFilmModalComponent>;
 
   constructor(private dialog: MatDialog, private filmsService: FilmsService) { 
-  }
-
-  addFilm(): void {
-    alert("add");
-  }
-  ngOnInit(): void {
-    console.log(this.results);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -33,6 +33,11 @@ export class FilmResultsListComponent implements OnInit {
     }
   }
 
+  ngOnInit(): void {
+    console.log(this.results);
+  }
+
+  /* Open Edit Film Modal */
   openEditFilmModal(item: Film): void {
     let editFilmModal = this.dialog.open(EditFilmModalComponent, {
       data: item,
@@ -45,6 +50,7 @@ export class FilmResultsListComponent implements OnInit {
     });
   }
 
+  /* Open Add Film Modal */
   openAddFilmModal(): void {
     let addFilmModal = this.dialog.open(AddFilmModalComponent, {
       position: {
@@ -56,6 +62,7 @@ export class FilmResultsListComponent implements OnInit {
     });
   }
 
+  /* Open Remove Film Modal */
   openRemoveFilmModal(item: Film): void {
     let removeFilmModal = this.dialog.open(RemoveFilmModalComponent, {
       data: item,
@@ -63,7 +70,7 @@ export class FilmResultsListComponent implements OnInit {
         top: '30vh',
         left: '40vw'
       },
-      height: '20%',
+      height: '25%',
       width: '20%'
     });
   }

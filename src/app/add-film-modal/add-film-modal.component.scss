@@ -5,13 +5,16 @@
   align-items: flex-end;
   border: 1px solid #e6e8eb;
   border-radius: 4px;
-
+  padding-bottom: 20px;
   padding: 20px;
   margin-bottom: 10px;
 }
+.mat-dialog-title {
+  border-bottom: 1px solid #3c4a5a;
+}
 .modal__variable-input {
   padding: 0 10px;
-  width: 100%;
+  width: 85%;
   height: 40px;
 }
 input {
