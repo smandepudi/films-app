@@ -11,6 +11,7 @@
       <div class="required-field mb-2">
         <input
           class="modal__variable-input"
+          placeholder="pick a date"
           id="{{ film.key }}"
           (click)="basicDatepicker.open()"
           (dateChange)="addDataForFilm($event, film.key, i)"

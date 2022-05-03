@@ -1,29 +1,6 @@
 <div class="resultsView">
   <div class="result-header">Add your favorite films to the list</div>
 
-  <!-- <div class="f1Results pb-5" *ngIf="this.resultsToDisplay.length > 0">
-    <div class="result-header-row">
-      <div class="result-list__col">Title</div>
-      <div class="result-list__col">Director</div>
-      <div class="result-list__col">Date</div>
-      <div class="result-list__col">Remove</div>
-    </div>
-    <div *ngFor="let result of this.resultsToDisplay; index as i">
-      <div class="result-list__row">
-        <div class="result-list__col">
-          {{ result?.title }}
-        </div>
-        <div class="result-list__col">
-          {{ result?.director }}
-        </div>
-        <div class="result-list__col">
-          {{ result?.releaseDate }}
-        </div>
-        <div class="result-list__col">X</div>
-      </div>
-    </div>
-  </div> -->
-
   <section *ngIf="this.resultsToDisplay.length > 0">
     <table class="table table-bordered table-striped">
       <thead class="table-light">
@@ -34,26 +11,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let resource of this.resultsToDisplay; let i = index">
-          <td class="align-middle">
-            <div class="align-middle inline-block titleDiv">
-              <span class="titleLink" (click)="openEditFilmModal(resource)">{{
-                resource?.title
-              }}</span>
-            </div>
+          <td (click)="openEditFilmModal(resource)">
+            <span class="titleLink">{{ resource?.title }}</span>
           </td>
-          <td class="align-middle">
-            <div class="align-middle inline-block">
-              {{ resource?.director }}
-            </div>
+          <td>
+            {{ resource?.director }}
           </td>
-          <td class="align-middle">
-            <div class="align-middle inline-block">
-              {{ resource?.releaseDate | date: "MMM d, y" }}
-            </div>
+          <td>
+            {{ resource?.releaseDate | date: "MMM d, y" }}
           </td>
-          <td class="align-middle" (click)="openRemoveFilmModal(resource)">
-            <div class="align-middle inline-block removeIcon">X</div>
-          </td>
+          <td (click)="openRemoveFilmModal(resource)" class="removeIcon">X</td>
         </tr>
       </tbody>
     </table>
