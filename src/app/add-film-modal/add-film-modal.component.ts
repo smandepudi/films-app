@@ -29,12 +29,12 @@ export class AddFilmModalComponent implements OnInit {
     this.showSave = !this.anyEmptyFields(); // show Save only when all the fields are filled
   }
 
-  /* cancel save */
+  /* cancel and close Dialog */
   cancel(): void {
     this.dialogRef.close();
   }
 
-  /* save new film */
+  /* save new film and close dialog */
   save(): void {
     if (this.showSave) {
      this.filmsService.addFilm(this.copyOfNewFilm).subscribe(success => {
@@ -54,7 +54,7 @@ export class AddFilmModalComponent implements OnInit {
     return false;
   }
 
-  /* Adding a new film*/
+  /* creating a new film object*/
   private getNewFilm(): Film {
     let lastIndex = this.filmsService.allFilms[this.filmsService.allFilms.length - 1].id;
     return {
