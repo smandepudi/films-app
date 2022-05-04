@@ -4,9 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+install json server for CRUD operations
+npm install -g json-server
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run json-server --watchmyJSONfile.json
+Run json-server 
+json-server --watch myJSONfile.json
 this will run the json server http://localhost:3000/films
 
 ## Code scaffolding
