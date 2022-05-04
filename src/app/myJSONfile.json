@@ -17,18 +17,6 @@
       "title": "Episode VI : Return Of The Jedi",
       "director": "Richard M",
       "releaseDate": "1983-05-25T07:00:00.000Z"
-    },
-    {
-      "id": 4,
-      "title": "Episode I - Phantonm Menace",
-      "director": "George Lucas",
-      "releaseDate": "1999-05-18T07:00:00.000Z"
-    },
-    {
-      "id": 5,
-      "title": "Episode II - Attack of Clones",
-      "director": "George L",
-      "releaseDate": "2022-05-16T07:00:00.000Z"
     }
   ]
 }

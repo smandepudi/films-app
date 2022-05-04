@@ -42,7 +42,7 @@ export class FilmResultsListComponent implements OnInit {
     let editFilmModal = this.dialog.open(EditFilmModalComponent, {
       data: item,
       position: {
-        top: '30vh',
+        top: '20vh',
         left: '40vw'
       },
       height: '60%',
@@ -54,10 +54,10 @@ export class FilmResultsListComponent implements OnInit {
   openAddFilmModal(): void {
     let addFilmModal = this.dialog.open(AddFilmModalComponent, {
       position: {
-        top: '25vh',
+        top: '20vh',
         left: '40vw'
       },
-      height: '55%',
+      height: '60%',
       width: '20%'
     });
   }
